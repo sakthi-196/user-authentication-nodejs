@@ -30,7 +30,7 @@ app.use('/api/posts',postsRouter);
 app.get('/',(req,res)=>{
     res.json({message:'Hello from server'})
 })
-const PORT=process.env.PORT || 1920;
+const PORT=process.env.PORT || 3000;
 app.listen(PORT,()=>{
     console.log(`server running on the port:${PORT}`)
 })

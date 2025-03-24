@@ -63,14 +63,15 @@ export const signin=async(req,res)=>{
     res
         .cookie('Authorization','Bearer '+ token,{
             expires: new Date(Date.now ()+ 8 * 3600000),
-            httpOnly: process.env.NODE_ENV === 'production',
-            secure: process.env.NODE_ENV === 'production',
+            httpOnly: true,
+            secure:true,
         })
         .json({
             success: true,
             token,
             message: 'Logged in successfully'
         });
+    console.log(process.env.NODE_ENV)    
     }catch(err){
         console.log(err)
     }
