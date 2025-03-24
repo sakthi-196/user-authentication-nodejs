@@ -25,7 +25,7 @@ export const signup=async (req,res)=>{
         result.password=undefined;
         res.status(201).json({
             success:true,
-            message: 'Your Account has been created successfully',
+            message: 'Your Account has been Created Successfully',
             result,
         })
     }catch(err){
