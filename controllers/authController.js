@@ -70,8 +70,7 @@ export const signin=async(req,res)=>{
             success: true,
             token,
             message: 'Logged in successfully'
-        });
-    console.log(process.env.NODE_ENV)    
+        });   
     }catch(err){
         console.log(err)
     }
@@ -145,6 +144,7 @@ export const verifyVerificationCode=async(req,res)=>{
         if(!existingUser.verificationCode || !existingUser.verificationCodeValidation){
             return res.status(400).json({success:false,message:"Something is wrong with the code"})
         }
+        console.log(existingUser.verificationCodeValidation);
         if(Date.now() - existingUser.verificationCodeValidation > 5 * 60 * 1000){
             return res.status(400).json({success:false,message:"Your code has been expired"});
         }
@@ -254,7 +254,7 @@ export const verifyForgotPasswordCode=async(req,res)=>{
             await existingUser.save();
             return res.status(200).json({success:true,message:"Your password has been updated"})
         }
-        return res.status(400).json({success:true,messgae:"unexpected occured!"})
+        return res.status(400).json({success:false,messgae:"unexpected occured!"})
     }catch(err){
         console.log(err)
     }
